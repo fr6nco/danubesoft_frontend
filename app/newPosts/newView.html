@@ -1,0 +1,20 @@
+<h3>New posts</h3>
+
+<div ng-hide='data.new.post_loading'>
+    <div ng-repeat="(key, post) in data.new.posts | orderObjectBy: 'timestamp'">
+        <div class="row">
+            <h5>{{post.title}}</h5>
+        </div>
+        <div class="row">
+            {{post.date | date: 'yyyy-MM-dd HH:mm:ss'}}
+        </div>
+        <div class="row">
+            {{post.body}}
+        </div>
+        <a href ng-click="archivePost(post.firebase_id)">archive</a>
+        <br>
+    </div>
+</div>
+<div ng-show='data.new.post_loading'>
+    Loading posts..
+</div>

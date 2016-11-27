@@ -1,0 +1,19 @@
+<h3>Archived posts</h3>
+
+<div ng-hide='data.archive.post_loading'>
+    <div ng-repeat="(id, post) in data.archive.posts | orderObjectBy: 'timestamp'">
+        <div class="row">
+            <h5>{{post.title}}</h5>
+        </div>
+        <div class="row">
+            {{post.date | date: 'yyyy-MM-dd HH:mm:ss'}}
+        </div>
+        <div class="row">
+            {{post.body}}
+        </div>
+        <a href ng-click="deletePost(post.firebase_id)">delete</a>
+    </div>
+</div>
+<div ng-show='data.archive.post_loading'>
+    Loading posts..
+</div>
